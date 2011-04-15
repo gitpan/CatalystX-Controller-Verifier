@@ -31,4 +31,4 @@ requires:
   Test::More: 0
 resources:
   repository: https://github.com/jshirley/catalystx-controller-verifier
-version: 0.01
+version: 0.02

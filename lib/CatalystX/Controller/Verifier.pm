@@ -1,6 +1,6 @@
 package CatalystX::Controller::Verifier;
 BEGIN {
-  $CatalystX::Controller::Verifier::VERSION = '0.01';
+  $CatalystX::Controller::Verifier::VERSION = '0.02';
 }
 
 use strict;
@@ -40,8 +40,8 @@ has 'detach_on_failure' => (
 
 
 sub verify {
-    my ( $self, $c ) = @_;
-    my $params = $c->req->params;
+    my ( $self, $c, $params ) = @_;
+    $params = $c->req->params if not defined $params or ref $params ne 'HASH';
 
     my $dm      = $self->data_manager($c);
     my $results = $dm->verify($c->action->name, $params);
@@ -120,7 +120,7 @@ CatalystX::Controller::Verifier - Moose Role for verifying request parameters on
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
